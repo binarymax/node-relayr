@@ -16,7 +16,7 @@ relayr.connect = function(options){
         pubnubkeys.subscribe_key = data.subscribeKey;
         pubnubkeys.channel = data.channel;
         
-        listen(keys);
+        listen(pubnubkeys);
 
     });
 
@@ -44,7 +44,7 @@ var getPubNubKeys = function(relayrkeys,callback){
 		if(!err) {
 			try {
 				pubnubkeys = JSON.parse(data.body);
-			catch(ex) {
+			} catch(ex) {
 				err = ex;
 			}
 		}
@@ -60,7 +60,7 @@ var listen = function(pubnubkeys) {
     console.log("Connecting to Relayr Sensors");
 
     connection.subscribe({
-        channel  : keys.channel,
+        channel  : pubnubkeys.channel,
         callback : function(message) {
             var err = null;
             try {
