@@ -1,0 +1,28 @@
+{
+  "name": "relayr",
+  "version": "0.0.1",
+  "description": "Relayr sensor SDK for node",
+  "main": "relayr.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/binarymax/node-relayr.git"
+  },
+  "keywords": [
+    "relayr",
+    "sensor",
+    "pubnub"
+  ],
+  "author": "Max Irwin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/binarymax/node-relayr/issues"
+  },
+  "homepage": "https://github.com/binarymax/node-relayr",
+  "dependencies": {
+    "request": "^2.45.0",
+    "pubnub": "^3.6.7"
+  }
+}
