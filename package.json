@@ -1,6 +1,6 @@
 {
   "name": "relayr",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Relayr sensor SDK for node",
   "main": "relayr.js",
   "scripts": {
