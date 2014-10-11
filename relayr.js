@@ -9,16 +9,16 @@ relayr.connect = function(options){
 
 	getPubNubKeys(options,function(err,data){
 
-        var pubnubkeys = {};
+		var pubnubkeys = {};
 
-        pubnubkeys.cipher_key = data.cipherKey;
-        pubnubkeys.auth_key = data.authKey;
-        pubnubkeys.subscribe_key = data.subscribeKey;
-        pubnubkeys.channel = data.channel;
-        
-        listen(pubnubkeys);
+		pubnubkeys.cipher_key = data.cipherKey;
+		pubnubkeys.auth_key = data.authKey;
+		pubnubkeys.subscribe_key = data.subscribeKey;
+		pubnubkeys.channel = data.channel;
+		
+		listen(pubnubkeys);
 
-    });
+	});
 
 };
 
@@ -37,7 +37,7 @@ var getPubNubKeys = function(relayrkeys,callback){
 		headers: {'Authorization': 'Bearer ' + token}
 	}
 
-    console.log("Retrieving Pubnub Keys");
+	console.log("Retrieving Pubnub Keys");
 
 	request.post(options,function(err,data){
 		var pubnubkeys = {};
@@ -54,28 +54,28 @@ var getPubNubKeys = function(relayrkeys,callback){
 };
 
 var listen = function(pubnubkeys) {
-    
-    var connection = pubnub.init(pubnubkeys);
+	
+	var connection = pubnub.init(pubnubkeys);
 
-    console.log("Connecting to Relayr Sensors");
+	console.log("Connecting to Relayr Sensors");
 
-    connection.subscribe({
-        channel  : pubnubkeys.channel,
-        callback : function(message) {
-            var err = null;
-            try {
-                message = JSON.parse(message);
-            } catch (ex) {
-                err = ex;
-            }
-            listeners.forEach(function(listener){
-                listener(err,message);
-            });
-        },
-        error:function(err) {
-            console.log("Relayr Error!");
-            console.log(err);
-        }
-    });
+	connection.subscribe({
+		channel  : pubnubkeys.channel,
+		callback : function(message) {
+			var err = null;
+			try {
+				message = JSON.parse(message);
+			} catch (ex) {
+				err = ex;
+			}
+			listeners.forEach(function(listener){
+				listener(err,message);
+			});
+		},
+		error:function(err) {
+			console.log("Relayr Error!");
+			console.log(err);
+		}
+	});
 
 };
