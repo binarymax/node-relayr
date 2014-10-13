@@ -2,7 +2,7 @@
 
 Relayr sensor SDK for node.
 
-Works by connecting to the PubNub channel associated with your Relayr Wonderbar sensor.
+Works by connecting to the PubNub channel associated with your Relayr WunderBar sensor.
 
 ## installation
 
